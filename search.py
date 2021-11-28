@@ -1,18 +1,8 @@
 import torch
 from data import EOS, UNK
 
-"""
- Beam search by batch
- need model has two functions:
-    (1) decode_step
-    (2) prepare_incremental_input
- when adapted to other use, modify those parts that are labeled by ##rewrite## accordingly. 
-"""
 
 
-###########
-##rewrite##
-###########
 class Hypothesis(object):
     def __init__(self, state_dict, seq, score):
         '''
@@ -26,9 +16,7 @@ class Hypothesis(object):
         self.score = score
 
     def is_completed(self):
-        ###########
-        ##rewrite##
-        ###########
+
         if self.seq[-1] == EOS:
             return True
         return False
@@ -50,9 +38,7 @@ class Beam(object):
 
     def merge_score(self, prev_hyp, step):
         # step has two attributes: token and score
-        ###########
-        ##rewrite##
-        ###########
+
         token, score = step
         prefix = prev_hyp.seq
 
